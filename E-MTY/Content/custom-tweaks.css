@@ -1,0 +1,22 @@
+﻿#navbarBody {
+    padding-top: 0;
+}
+
+#navbarLogin {
+    color: #0b1129;
+    border-radius: 25px;
+    background: #ffc859;
+    padding: 0px, 10px;
+    width: 150%;
+    text-align:center;
+}
+
+#navbarTitle {
+    font-size: xx-large;
+    color:#ffc859;
+}
+
+.navbarElement {
+    font-size: medium;
+    color: #ffc859 !important;
+}
