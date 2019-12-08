@@ -1,5 +1,30 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
-<img src="~/Content/img/bg-home.png" style="width:100%" />
+<header class="homeHeader">
+    <div class="center">
+        <h1 id="homeSubtitle">BIENVENIDO A:</h1>
+        <h1 id="homeTitle">e-mty</h1>
+        <button id="homeLogin" onclick="window.location='/Account/Login'">INICIA SESIÓN</button>
+        <br />
+        <button id="homeArrowButton" onclick="window.location='#section2';"><img id="homeArrow" src="~/Content/img/down-arrow.svg" /></button>
+    </div>
+</header>
+<!--El spacer que va detras del navbar-->
+<div class="sticky-top bg-primary hidden-spacer"> </div>
+<!--Pregunta 1-->
+<div class="post-container" id="section2">
+    <div class="post-thumb-left"><img src="~/Content/img/bubblea-home.png" style="width:250px" /></div>
+    <div class="post-content-left">
+        <h3 class="post-title">¿Qué es e-MTY?</h3>
+        <h5><strong>e-MTY</strong> es un proyecto en el que se le brinda a los emprendedores, mentores, incubadoras e inversionistas los medios y oportunidades para poder comunicarse entre ellos y formar vínculos para futuros o actuales proyectos.</h5>
+    </div>
+</div>
+<!--Pregunta 2-->
+<div class="post-container" id="section3">
+    <div class="post-thumb-right"><img src="~/Content/img/bubbleb-home.png" style="width:250px" /></div>
+    <div class="post-content-right">
+        <h3 class="post-title">¿Cómo formo parte de e-MTY?</h3>
+        <h5>¡Es muy sencillo!, sólo necesitas registrarte, para ello debes seleccionar el botón de registro y llenar los campos solicitados.</h5>
+    </div>
+</div>

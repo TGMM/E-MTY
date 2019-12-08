@@ -1,7 +1,12 @@
 ﻿<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary static-top">
+@{ 
+    var routeDataValues = HttpContext.Current.Request.RequestContext.RouteData.Values;
+    var controller = routeDataValues["Controller"].ToString();
+    var action = routeDataValues["Action"].ToString();
+}
+<nav class="navbar navbar-expand-sm fixed-top navbar-light @(controller == "Home" && action == "Index" ? "" : "bg-primary")">
     <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href = "@Url.Action("Index", "Home")">
             <strong id="navbarTitle">e-mty</strong>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,10 +24,10 @@
                     <a class="nav-link navbarElement" href="#">calendario</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link navbarElement" href="#">registro</a>
+                    <a class="nav-link navbarElement" href="/Account/Register">registro</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="navbarLogin" href="#">login</a>
+                    <a class="nav-link" id="navbarLogin" href="/Account/Login">login</a>
                 </li>
             </ul>
         </div>

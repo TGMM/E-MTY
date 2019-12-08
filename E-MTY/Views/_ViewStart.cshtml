@@ -1,6 +1,8 @@
 ﻿@{
-    var controller = HttpContext.Current.Request.RequestContext.RouteData.Values["Controller"].ToString();
-    if (controller == "Home")
+    var routeDataValues = HttpContext.Current.Request.RequestContext.RouteData.Values;
+    var controller = routeDataValues["Controller"].ToString();
+    var action = routeDataValues["Action"].ToString();
+    if (controller == "Home" && action == "Index")
     {
         Layout = "~/Views/Shared/_HomeLayout.cshtml";
     }
