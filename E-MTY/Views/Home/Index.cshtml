@@ -1,13 +1,17 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+@using Microsoft.AspNet.Identity
 <header class="homeHeader">
     <div class="center">
         <h1 id="homeSubtitle">BIENVENIDO A:</h1>
         <h1 id="homeTitle">e-mty</h1>
-        <button id="homeLogin" onclick="window.location='/Account/Login'">INICIA SESIÓN</button>
+        @if (!Request.IsAuthenticated)
+        {
+            <button id="homeLogin" onclick="window.location='/Account/Login'">INICIA SESIÓN</button>
+        }
         <br />
-        <button id="homeArrowButton" onclick="window.location='#section2';"><img id="homeArrow" src="~/Content/img/down-arrow.svg" /></button>
+        <button id="homeArrowButton" onclick="document.getElementById('section2').scrollIntoView();"><img id="homeArrow" src="~/Content/img/down-arrow.svg" /></button>
     </div>
 </header>
 <!--El spacer que va detras del navbar-->

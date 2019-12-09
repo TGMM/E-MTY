@@ -26,5 +26,10 @@ namespace E_MTY.Controllers
 
             return View();
         }
+
+        public ActionResult Calendar()
+        {
+            return View();
+        }
     }
 }

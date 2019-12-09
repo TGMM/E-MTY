@@ -15,6 +15,16 @@
     text-align:center;
 }
 
+#navbarLogout {
+    color: #0b1129;
+    border-radius: 25px;
+    background: #ffc859;
+    padding: 0px, 10px;
+    width: auto;
+    text-align: center;
+    margin-left: 10px;
+}
+
 #navbarTitle {
     font-size: xx-large;
     color:#ffc859;
@@ -50,6 +60,32 @@
     left: 50%;
     -ms-transform: translate(-50%, -55%);
     transform: translate(-50%, -55%);
+}
+
+.center-bottom {
+    margin: 0;
+    position: absolute;
+    bottom: -85%;
+    left: 50%;
+    -ms-transform: translate(-50%, -55%);
+    transform: translate(-50%, -55%);
+}
+
+.center-horizontal {
+    width: 200px;
+    display: block;
+    background-color: #eee;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.topLeft {
+    margin: 0;
+    position: absolute;
+    top: 15%;
+    left: 10%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 #homeTitle {
@@ -126,4 +162,30 @@
 .post-title {
     font-weight: bold;
     font-size: 200%
+}
+
+#registerHeader {
+    height: 100vh;
+    min-height: 400px;
+    background-size: cover;
+    background-image: url('img/bg-register-home.png');
+    background-repeat: no-repeat;
+    background-position: 75% 50%;
+    text-align: center;
+}
+
+.register-form {
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 50px;
+    border-radius: 25px;
+    height:50px;
+}
+
+#calendarHeader{
+    background-image: url(img/bg-calendar.jpg);
+}
+
+#calendarTitle{
+    font-weight:bold;
 }

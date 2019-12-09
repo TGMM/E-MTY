@@ -1,12 +1,13 @@
 ﻿<!-- Navigation -->
-@{ 
+@{
     var routeDataValues = HttpContext.Current.Request.RequestContext.RouteData.Values;
     var controller = routeDataValues["Controller"].ToString();
     var action = routeDataValues["Action"].ToString();
 }
+@using Microsoft.AspNet.Identity
 <nav class="navbar navbar-expand-sm fixed-top navbar-light @(controller == "Home" && action == "Index" ? "" : "bg-primary")">
     <div class="container">
-        <a class="navbar-brand" href = "@Url.Action("Index", "Home")">
+        <a class="navbar-brand" href="@Url.Action("Index", "Home")">
             <strong id="navbarTitle">e-mty</strong>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,14 +22,28 @@
                     <a class="nav-link navbarElement" href="#">cursos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link navbarElement" href="#">calendario</a>
+                    <a class="nav-link navbarElement" href="/Home/Calendar">calendario</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link navbarElement" href="/Account/Register">registro</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="navbarLogin" href="/Account/Login">login</a>
-                </li>
+                @if (Request.IsAuthenticated)
+                {
+                    using (@Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "nav-link navbarElement", @style = "display:none" }))
+                    {
+                        @Html.AntiForgeryToken()
+                    }
+                    <li class="nav-item">
+                        @Html.ActionLink("Hola " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "nav-link navbarElement" })
+                    </li>
+                    <li class="nav-item"><a class="nav-link" id="navbarLogout" href="javascript:document.getElementById('logoutForm').submit()">Cerrar Sesión</a></li>
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <a class="nav-link navbarElement" href="/Account/Register">registro</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="navbarLogin" href="/Account/Login">login</a>
+                    </li>
+                }
             </ul>
         </div>
     </div>
