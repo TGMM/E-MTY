@@ -183,9 +183,13 @@
 }
 
 #calendarHeader{
-    background-image: url(img/bg-calendar.jpg);
+    background-image: url('img/bg-calendar.jpg');
 }
 
 #calendarTitle{
     font-weight:bold;
+}
+
+#loginHeader {
+    background-image: url('img/bg-login.png');
 }

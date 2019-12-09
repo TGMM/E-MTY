@@ -2,7 +2,7 @@
     var routeDataValues = HttpContext.Current.Request.RequestContext.RouteData.Values;
     var controller = routeDataValues["Controller"].ToString();
     var action = routeDataValues["Action"].ToString();
-    if (action == "Index" || action == "Register" || action == "Calendar")
+    if (action == "Index" || action == "Register" || action == "Calendar" || action == "Login")
     {
         Layout = "~/Views/Shared/_HomeLayout.cshtml";
     }
