@@ -1,39 +1,39 @@
 ﻿@{
-    ViewBag.Title = "Cursos";
+    ViewBag.Title = "Empresas";
 }
 
-@model IEnumerable<E_MTY.Data.AspNetCourse>
+@model IEnumerable<E_MTY.Data.AspNetBusiness>
 @using Microsoft.AspNet.Identity.EntityFramework;
 @using E_MTY.Models;
 @using Microsoft.AspNet.Identity.Owin;
 @using E_MTY.Overrides
 
 @{
-    var courses = Model;
+    var businesses = Model;
 }
 
-<h2>Cursos</h2>
+<h2>Empresas</h2>
 <div class="container">
     <div class="row blog">
         <div class="col-sm">
             <div id="CourseCarousel" class="carousel slide" data-ride="carousel">
-                @if (courses.Count() == 0)
+                @if (businesses.Count() == 0)
                 {
-                    <h3>Aún no hay ningún curso.</h3>
+                    <h3>Aún no hay ninguna empresa.</h3>
                 }
                 else
                 {
                     <ol class="carousel-indicators">
-                        @for (int i = 0; i < Math.Ceiling((decimal)courses.Count() / 4); i++)
+                        @for (int i = 0; i < Math.Ceiling((decimal)businesses.Count() / 4); i++)
                         {
                             <li data-target="#CourseCarousel" data-slide-to="@i" class="@(i == 0 ? "active" : "")"></li>
                         }
                     </ol>
 
 
-                    var courseList = courses.ToList();
+                    var businessList = businesses.ToList();
                     <div class="carousel-inner">
-                        @for (int i = 0; i < courses.Count(); i++)
+                        @for (int i = 0; i < businesses.Count(); i++)
                         {
                             if (i % 4 == 0)
                             {
@@ -41,14 +41,14 @@
                             }
 
                             <div class="col-md-3">
-                                <a href="~/Course/Details/@courseList[i].Id" style="position: relative;">
+                                <a href="~/Business/Details/@businessList[i].id" style="position: relative;">
                                     @*<img src="http://via.placeholder.com/175" alt="Image" style="max-width:100%;">*@
                                     <img src="https://picsum.photos/175?random=@i" alt="Image" style="max-width:100%;">
-                                    <p class="text-block">@courseList[i].Name</p>
+                                    <p class="text-block">@businessList[i].Name</p>
                                 </a>
                             </div>
 
-                            if (i % 4 == 3 || i == courses.Count() - 1)
+                            if (i % 4 == 3 || i == businesses.Count() - 1)
                             {
                                 @Html.Raw("</div></div>");
                             }

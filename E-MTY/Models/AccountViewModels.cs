@@ -76,11 +76,12 @@ namespace E_MTY.Models
         public string Email { get; set; }
 
         [Required]
-        [Display(Name ="Role")]
+        [Display(Name ="Rol")]
         public string Role { get; set; }
 
         [Required]
-        [Display(Name ="UserName")]
+        [RegularExpression(@"^\S*$", ErrorMessage = "No se permiten espacios en blanco")]
+        [Display(Name ="Nombre de usuario")]
         public string UserName { get; set; }
 
         [Required]

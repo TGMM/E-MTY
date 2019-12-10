@@ -7,127 +7,113 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using E_MTY.Data;
-using Microsoft.AspNet.Identity;
 
 namespace E_MTY.Controllers
 {
-    public class CourseController : Controller
+    public class ProjectController : Controller
     {
-        private CourseEntities db = new CourseEntities();
+        private ProjectEntities db = new ProjectEntities();
 
-        // GET: Course
+        // GET: Project
         public ActionResult Index()
         {
-            return View(db.AspNetCourses.ToList());
+            return View(db.AspNetProjects.ToList());
         }
 
-        // GET: Course/Details/5
+        // GET: Project/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AspNetCourse aspNetCourse = db.AspNetCourses.Find(id);
-            if (aspNetCourse == null)
+            AspNetProject aspNetProject = db.AspNetProjects.Find(id);
+            if (aspNetProject == null)
             {
                 return HttpNotFound();
             }
-            return View(aspNetCourse);
+            return View(aspNetProject);
         }
 
-        // GET: Course/Create
-        public ActionResult Create()
+        // GET: Project/Create
+        public ActionResult Create(int id)
         {
+            ViewBag.id = id;
             return View();
         }
 
-        // POST: Course/Create
+        // POST: Project/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Date,Description")] AspNetCourse aspNetCourse)
+        public ActionResult Create([Bind(Include = "BusinessId,Name,Description,Preview")] AspNetProject aspNetProject)
         {
             if (ModelState.IsValid)
             {
-                db.AspNetCourses.Add(aspNetCourse);
-                db.AspNetCourseUsers.Add(new AspNetCourseUser { 
-                    UserId = User.Identity.GetUserId(),
-                    CourseId = aspNetCourse.Id
-                });
+                db.AspNetProjects.Add(aspNetProject);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(aspNetCourse);
+            return View(aspNetProject);
         }
 
-        // GET: Course/Edit/5
+        // GET: Project/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AspNetCourse aspNetCourse = db.AspNetCourses.Find(id);
-            if (aspNetCourse == null)
+            AspNetProject aspNetProject = db.AspNetProjects.Find(id);
+            if (aspNetProject == null)
             {
                 return HttpNotFound();
             }
-            return View(aspNetCourse);
+            return View(aspNetProject);
         }
 
-        // POST: Course/Edit/5
+        // POST: Project/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Date,Description")] AspNetCourse aspNetCourse)
+        public ActionResult Edit([Bind(Include = "PojectId,BusinessId,Name,Description,Preview")] AspNetProject aspNetProject)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(aspNetCourse).State = EntityState.Modified;
+                db.Entry(aspNetProject).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(aspNetCourse);
+            return View(aspNetProject);
         }
 
-        // GET: Course/Delete/5
+        // GET: Project/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AspNetCourse aspNetCourse = db.AspNetCourses.Find(id);
-            if (aspNetCourse == null)
+            AspNetProject aspNetProject = db.AspNetProjects.Find(id);
+            if (aspNetProject == null)
             {
                 return HttpNotFound();
             }
-            return View(aspNetCourse);
+            return View(aspNetProject);
         }
 
-        // POST: Course/Delete/5
+        // POST: Project/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            AspNetCourse aspNetCourse = db.AspNetCourses.Find(id);
-            db.AspNetCourses.Remove(aspNetCourse);
+            AspNetProject aspNetProject = db.AspNetProjects.Find(id);
+            db.AspNetProjects.Remove(aspNetProject);
             db.SaveChanges();
             return RedirectToAction("Index");
-        }
-
-        public ActionResult CourseList()
-        {
-            return View(db.AspNetCourses.ToList());
-        }
-
-        public ActionResult MyCourses()
-        {
-            return View(db.AspNetCourses.ToList());
         }
 
         protected override void Dispose(bool disposing)

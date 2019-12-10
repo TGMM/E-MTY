@@ -163,8 +163,8 @@ namespace E_MTY.Controllers
                     var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
                     var result = await UserManager.CreateAsync(user, model.Password);
                     var Db = new ApplicationDbContext();
-
-                    if (result.Succeeded)
+                    var role = model.Role;
+                    if (result.Succeeded && model.Role != null || model.Role != string.Empty)
                     {
                         var roleStore = new RoleStore<IdentityRole>(context);
                         var roleManager = new RoleManager<IdentityRole>(roleStore);

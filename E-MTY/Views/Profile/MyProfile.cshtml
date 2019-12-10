@@ -138,7 +138,8 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-img">
-                    <img src="https://via.placeholder.com/275x183.png" alt="Profile Picture" />
+                    @*<img src="https://via.placeholder.com/275x183.png" alt="Profile Picture" />*@
+                    <img src="https://i.pravatar.cc/275" alt="Profile Picture" />
                     <div class="file btn btn-lg btn-primary">
                         Change Photo
                         <input type="file" name="file" />
@@ -163,17 +164,42 @@
                 </div>
             </div>
             <div class="col-md-2">
-                <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" />
+                <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Editar Perfil" />
             </div>
         </div>
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-work">
-                    <p>ENLACES RELEVANTES</p>
-                    <a href="">Mis Empresas</a><br />
-                    <a href="">Crear Empresa</a><br />
-                    <a href="">Mis Proyectos</a><br />
-                    <a href="">Crear Proyecto</a><br />
+                    @{
+                        var Db = new ApplicationDbContext();
+                        var userId = User.Identity.GetUserId();
+                        var currentUser = Db.Users.FirstOrDefault(u => u.Id == userId);
+                        var intRole = currentUser.Roles.FirstOrDefault(u => u.RoleId != "0");
+                    }
+                    @switch (Int32.Parse(intRole.RoleId))
+                    {
+                        //Inversionista
+                        case 1:
+                            break;
+                        case 2:
+                        case 3:
+                            <p>ENLACES RELEVANTES</p>
+                            <a href="">Registrar ubicación</a><br />
+                            break;
+                        case 4:
+                            <p>ENLACES RELEVANTES</p>
+                            <a href="~/Business/MyBusinesses">Mis Empresas</a><br />
+                            <a href="~/Business/Create">Registrar Empresa</a><br />
+                            <a href="~/Project/MyProjects">Mis Proyectos</a><br />
+                            break;
+                        case 5:
+                            <p>ENLACES RELEVANTES</p>
+                            <a href="~/Course/MyCourses">Mis cursos</a><br />
+                            <a href="~/Course/Create">Registrar Curso</a><br />
+                            break;
+                        default:
+                            break;
+                    }
                 </div>
             </div>
             <div class="col-md-8">

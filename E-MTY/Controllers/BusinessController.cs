@@ -121,6 +121,16 @@ namespace E_MTY.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult BusinessList()
+        {
+            return View(db.AspNetBusinesses.ToList());
+        }
+
+        public ActionResult MyBusinesses()
+        {
+            return View(db.AspNetBusinesses.ToList());
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
