@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "Cursos";
+}
+
+@model IEnumerable<E_MTY.Data.AspNetCourse>
+@using Microsoft.AspNet.Identity.EntityFramework;
+@using E_MTY.Models;
+@using Microsoft.AspNet.Identity.Owin;
+@using E_MTY.Overrides
+
+@{
+    var courses = Model;
+}
+
+<h2>Cursos</h2>
+<div class="container">
+    <div class="row blog">
+        <div class="col-sm">
+            <div id="CourseCarousel" class="carousel slide" data-ride="carousel">
+                @if (courses.Count() == 0)
+                {
+                    <h3>Aún no hay ningún curso.</h3>
+                }
+                else
+                {
+                    <ol class="carousel-indicators">
+                        @for (int i = 0; i < Math.Ceiling((decimal)courses.Count() / 4); i++)
+                        {
+                            <li data-target="#CourseCarousel" data-slide-to="@i" class="@(i == 0 ? "active" : "")"></li>
+                        }
+                    </ol>
+
+
+                    var courseList = courses.ToList();
+                    <div class="carousel-inner">
+                        @for (int i = 0; i < courses.Count(); i++)
+                        {
+                            if (i % 4 == 0)
+                            {
+                                @Html.Raw("<div> <div class=\"row\">");
+                            }
+
+                            <div class="col-md-3">
+                                <a href="~/Profile/UserProfile/@courseList[i].Id" style="position: relative;">
+                                    <img src="http://via.placeholder.com/175" alt="Image" style="max-width:100%;">
+                                    <p class="text-block">@courseList[i].Name</p>
+                                </a>
+                            </div>
+
+                            if (i % 4 == 3 || i == courses.Count() - 1)
+                            {
+                                @Html.Raw("</div></div>");
+                            }
+                        }
+                    </div>
+
+                }
+
+            </div>
+        </div>
+    </div>
+</div>

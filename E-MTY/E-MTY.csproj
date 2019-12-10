@@ -183,6 +183,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BusinessController.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
@@ -192,6 +193,15 @@
     </Compile>
     <Compile Include="Data\AspNetBusinessUser.cs">
       <DependentUpon>BusinessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\AspNetCourse.cs">
+      <DependentUpon>CourseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\AspNetCourseUser.cs">
+      <DependentUpon>CourseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\AspNetProject.cs">
+      <DependentUpon>ProjectModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\AspNetRole.cs">
       <DependentUpon>LoginDatabaseModel.tt</DependentUpon>
@@ -220,6 +230,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BusinessModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Data\CourseModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CourseModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CourseModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CourseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CourseModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CourseModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Data\C__MigrationHistory.cs">
       <DependentUpon>LoginDatabaseModel.tt</DependentUpon>
     </Compile>
@@ -237,6 +262,21 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LoginDatabaseModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ProjectModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ProjectModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ProjectModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -282,6 +322,16 @@
       <DependentUpon>BusinessModel.edmx</DependentUpon>
       <LastGenOutput>BusinessModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Data\CourseModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CourseModel.edmx</DependentUpon>
+      <LastGenOutput>CourseModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\CourseModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CourseModel.edmx</DependentUpon>
+      <LastGenOutput>CourseModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Data\LoginDatabaseModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>LoginDatabaseModel.edmx</DependentUpon>
@@ -291,6 +341,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>LoginDatabaseModel.edmx</DependentUpon>
       <LastGenOutput>LoginDatabaseModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\ProjectModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProjectModel.edmx</DependentUpon>
+      <LastGenOutput>ProjectModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\ProjectModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProjectModel.edmx</DependentUpon>
+      <LastGenOutput>ProjectModel.cs</LastGenOutput>
     </Content>
     <Content Include="e-mty-icon.ico" />
     <Content Include="favicon.ico" />
@@ -337,6 +397,20 @@
     </EntityDeploy>
     <Content Include="Data\BusinessModel.edmx.diagram">
       <DependentUpon>BusinessModel.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Data\CourseModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CourseModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Data\CourseModel.edmx.diagram">
+      <DependentUpon>CourseModel.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Data\ProjectModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ProjectModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Data\ProjectModel.edmx.diagram">
+      <DependentUpon>ProjectModel.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -484,6 +558,13 @@
     <Content Include="Views\Business\Index.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\Profile\MyProfile.cshtml" />
+    <Content Include="Views\Course\Create.cshtml" />
+    <Content Include="Views\Course\Delete.cshtml" />
+    <Content Include="Views\Course\Details.cshtml" />
+    <Content Include="Views\Course\Edit.cshtml" />
+    <Content Include="Views\Course\Index.cshtml" />
+    <Content Include="Views\Profile\UserProfile.cshtml" />
+    <Content Include="Views\Course\CourseList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

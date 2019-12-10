@@ -15,6 +15,17 @@ namespace E_MTY.Controllers
             return View();
         }
 
+        public ActionResult UserProfile(string id)
+        {
+            if (id == null || id == string.Empty)
+            {
+                return RedirectToAction("Index","Home");
+            }
+            ViewBag.Id = id;
+            return View();
+        }
+
+
         // GET: Profile
         public ActionResult Index()
         {
