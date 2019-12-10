@@ -47,7 +47,7 @@ namespace E_MTY.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,Name,Value,Address")] AspNetBusiness aspNetBusiness)
+        public ActionResult Create([Bind(Include = "Name,Value,Address")] AspNetBusiness aspNetBusiness)
         {
             if (ModelState.IsValid)
             {

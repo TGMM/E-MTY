@@ -8,6 +8,13 @@ namespace E_MTY.Controllers
 {
     public class ProfileController : Controller
     {
+        // GET: MyProfile
+        [Authorize]
+        public ActionResult MyProfile()
+        {
+            return View();
+        }
+
         // GET: Profile
         public ActionResult Index()
         {

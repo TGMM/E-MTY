@@ -193,12 +193,6 @@
     <Compile Include="Data\AspNetBusinessUser.cs">
       <DependentUpon>BusinessModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\AspNetCours.cs">
-      <DependentUpon>CourseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\AspNetCourseUser.cs">
-      <DependentUpon>CourseModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Data\AspNetRole.cs">
       <DependentUpon>LoginDatabaseModel.tt</DependentUpon>
     </Compile>
@@ -226,21 +220,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BusinessModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Data\CourseModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CourseModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\CourseModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CourseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\CourseModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CourseModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Data\C__MigrationHistory.cs">
       <DependentUpon>LoginDatabaseModel.tt</DependentUpon>
     </Compile>
@@ -266,6 +245,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Overrides\CustomAuthorize.cs" />
+    <Compile Include="Overrides\EFMetadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -281,6 +261,7 @@
     <Content Include="Content\img\bg-calendar.jpg" />
     <Content Include="Content\img\bg-home.png" />
     <Content Include="Content\img\bg-login.png" />
+    <Content Include="Content\img\bg-profile.jpg" />
     <Content Include="Content\img\bg-register-home.png" />
     <Content Include="Content\img\bubblea-home.png" />
     <Content Include="Content\img\bubbleb-home.png" />
@@ -300,16 +281,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>BusinessModel.edmx</DependentUpon>
       <LastGenOutput>BusinessModel.cs</LastGenOutput>
-    </Content>
-    <Content Include="Data\CourseModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CourseModel.edmx</DependentUpon>
-      <LastGenOutput>CourseModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Data\CourseModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CourseModel.edmx</DependentUpon>
-      <LastGenOutput>CourseModel.cs</LastGenOutput>
     </Content>
     <Content Include="Data\LoginDatabaseModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -366,13 +337,6 @@
     </EntityDeploy>
     <Content Include="Data\BusinessModel.edmx.diagram">
       <DependentUpon>BusinessModel.edmx</DependentUpon>
-    </Content>
-    <EntityDeploy Include="Data\CourseModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CourseModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Data\CourseModel.edmx.diagram">
-      <DependentUpon>CourseModel.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -519,6 +483,7 @@
     <Content Include="Views\Business\Edit.cshtml" />
     <Content Include="Views\Business\Index.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Profile\MyProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -234,3 +234,20 @@
     padding-left: 20px;
     padding-right: 20px;
 }
+
+.registerBusinessButton {
+    margin: 0;
+    position: absolute;
+    bottom: -175%;
+    left: 50%;
+    -ms-transform: translate(-50%, -55%);
+    transform: translate(-50%, -55%);
+}
+
+.k::after {
+    content: 'ms';
+}
+
+#profileBackground {
+    background-image: url('img/bg-profile.jpg');
+}
