@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "Manage";
+}
+
+@using Microsoft.AspNet.Identity.EntityFramework;
+@using E_MTY.Models;
+@using Microsoft.AspNet.Identity.Owin;
+@using E_MTY.Overrides
+
+@{
+    var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+    var context = new ApplicationDbContext();
+    var allRoles = context.Roles.ToList();
+}
+
+@foreach (var role in allRoles)
+{
+    if(role.Name == "Admin")
+    {
+        continue;
+    }
+    <h2>@role.Name</h2>
+    <div class="container">
+        <div class="row blog">
+            <div class="col-sm">
+                <div id="@(role.Name)Carousel" class="carousel slide" data-ride="carousel">
+
+                    @{
+                        var userRoles = manager.Users.Where(r => r.Roles.Any(u => u.RoleId == role.Id));
+                    }
+                    @if (userRoles.Count() == 0)
+                    {
+                        <h3>Aún no hay nadie con ese rol. <a href="~/Account/Register">Sé el primero!</a></h3>
+                    }
+                    else
+                    {
+                        <ol class="carousel-indicators">
+                            @for (int i = 0; i < Math.Ceiling((decimal)userRoles.Count() / 4); i++)
+                            {
+                                <li data-target="#@(role.Name)Carousel" data-slide-to="@i" class="@(i == 0 ? "active" : "")"></li>
+                            }
+                        </ol>
+
+
+                        var userList = userRoles.ToList();
+                        <div class="carousel-inner">
+                            @for (int i = 0; i < userRoles.Count(); i++)
+                            {
+                                if (i % 4 == 0)
+                                {
+                                    @Html.Raw("<div> <div class=\"row\">");
+                                }
+
+                                <div class="col-md-3">
+                                    <a href="#" style="position: relative;">
+                                        <img src="http://via.placeholder.com/175" alt="Image" style="max-width:100%;">
+                                        <p class="text-block">@userList[i].UserName</p>
+                                    </a>
+                                </div>
+
+                                if (i % 4 == 3 || i == userRoles.Count() - 1)
+                                {
+                                    @Html.Raw("</div></div>");
+                                }
+                            }
+                        </div>
+
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+}

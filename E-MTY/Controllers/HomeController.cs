@@ -31,5 +31,10 @@ namespace E_MTY.Controllers
         {
             return View();
         }
+
+        public ActionResult TestForm()
+        {
+            return View();
+        }
     }
 }

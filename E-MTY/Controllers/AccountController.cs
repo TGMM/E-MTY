@@ -77,6 +77,11 @@ namespace E_MTY.Controllers
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var user = SignInManager.UserManager.Users.Where(u => u.Email == model.Email).FirstOrDefault();
+            if (user == null)
+            {
+                ModelState.AddModelError("", "Usuario o contraseña inválidos.");
+                return View(model);
+            }
             var result = await SignInManager.PasswordSignInAsync(user.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
@@ -88,7 +93,7 @@ namespace E_MTY.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", "Usuario o contraseña inválidos.");
                     return View(model);
             }
         }
@@ -157,6 +162,7 @@ namespace E_MTY.Controllers
                 {
                     var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
                     var result = await UserManager.CreateAsync(user, model.Password);
+                    var Db = new ApplicationDbContext();
 
                     if (result.Succeeded)
                     {
@@ -166,7 +172,7 @@ namespace E_MTY.Controllers
                         var userManager = new UserManager<ApplicationUser>(userStore);
                         userManager.AddToRole(user.Id, model.Role);
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-
+                        Db.SaveChanges();
                         // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                         // Send an email with this link
                         // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);

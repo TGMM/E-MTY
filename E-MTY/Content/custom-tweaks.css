@@ -191,5 +191,46 @@
 }
 
 #loginHeader {
+    height: 100vh;
+    min-height: 400px;
+    background-size: cover;
     background-image: url('img/bg-login.png');
+    background-repeat: no-repeat;
+    background-position: 75% 50%;
+    text-align: center;
+}
+
+.loginPageButton {
+    border-color: #0B1129;
+    border-width: medium;
+}
+
+<!--Carousel-->
+
+.blog .carousel-indicators {
+    left: 0;
+    top: auto;
+    bottom: -40px;
+}
+
+/* The colour of the indicators */
+.blog .carousel-indicators li {
+    background: #a3a3a3;
+    border-radius: 100%;
+    width: 20px;
+    height: auto;
+}
+
+.blog .carousel-indicators .active {
+    background: #707070;
+}
+
+.text-block {
+    position: absolute;
+    bottom: -85px;
+    left: 15px;
+    background-color: black;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
 }

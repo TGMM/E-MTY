@@ -9,6 +9,7 @@ namespace E_MTY
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+            //app.MapSignalR();
         }
     }
 }
