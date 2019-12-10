@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Dynamic;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -13,6 +14,7 @@ namespace E_MTY.Controllers
     public class ProjectController : Controller
     {
         private ProjectEntities db = new ProjectEntities();
+        private BusinessEntities dbB = new BusinessEntities();
 
         // GET: Project
         public ActionResult Index()
@@ -53,7 +55,7 @@ namespace E_MTY.Controllers
             {
                 db.AspNetProjects.Add(aspNetProject);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("MyProjects");
             }
 
             return View(aspNetProject);
@@ -114,6 +116,13 @@ namespace E_MTY.Controllers
             db.AspNetProjects.Remove(aspNetProject);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult MyProjects()
+        {
+
+            var tupleModel = new Tuple<List<AspNetProject>, List<AspNetBusiness>>(db.AspNetProjects.ToList(), dbB.AspNetBusinesses.ToList());
+            return View(tupleModel);
         }
 
         protected override void Dispose(bool disposing)

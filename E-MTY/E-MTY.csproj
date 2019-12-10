@@ -574,6 +574,7 @@
     <Content Include="Views\Business\BusinessList.cshtml" />
     <Content Include="Views\Course\MyCourses.cshtml" />
     <Content Include="Views\Business\MyBusinesses.cshtml" />
+    <Content Include="Views\Project\MyProjects.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

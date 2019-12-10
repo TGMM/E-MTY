@@ -164,7 +164,8 @@ namespace E_MTY.Controllers
                     var result = await UserManager.CreateAsync(user, model.Password);
                     var Db = new ApplicationDbContext();
                     var role = model.Role;
-                    if (result.Succeeded && model.Role != null || model.Role != string.Empty)
+                    bool alreadyRegistered = Db.Users.Any(u => u.Email == model.Email);
+                    if (result.Succeeded && (model.Role != null || model.Role != string.Empty) && !alreadyRegistered)
                     {
                         var roleStore = new RoleStore<IdentityRole>(context);
                         var roleManager = new RoleManager<IdentityRole>(roleStore);

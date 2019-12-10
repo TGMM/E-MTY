@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Mis Proyectos";
+}
+
+@using Microsoft.AspNet.Identity;
+@using E_MTY.Data
+<h2>Mis Proyectos</h2>
+
+@model Tuple<List<AspNetProject>, List<AspNetBusiness>>
+   
+@{ 
+    var projects = Model.Item1;
+    var businesses = Model.Item2;
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => new AspNetProject().Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => new AspNetProject().Description)
+        </th>
+        <th></th>
+    </tr>
+    @{
+
+    }
+    @foreach (AspNetProject item in projects)
+    {
+        var myBusinesses = businesses.Where(b => b.AspNetBusinessUsers.All(u => u.UserId == User.Identity.GetUserId())).ToList();
+        if (myBusinesses.Any(b => b.id == item.BusinessId))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.PojectId }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.PojectId }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.PojectId })
+                </td>
+            </tr>
+        }
+    }
+
+</table>

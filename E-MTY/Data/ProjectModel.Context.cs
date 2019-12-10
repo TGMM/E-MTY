@@ -24,7 +24,7 @@ namespace E_MTY.Data
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+
         public virtual DbSet<AspNetProject> AspNetProjects { get; set; }
     }
 }
